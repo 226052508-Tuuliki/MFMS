@@ -8,8 +8,7 @@ Group members:
 5. Thula
 6. Treasure
 7.  hhhh
-
-
+   
 Project discription 
 
 The municipal financial management system(MFMS) is a C based system which was developed to manage basic municipal financial information'
@@ -22,9 +21,6 @@ Asset Management
 Reports
 Searching
 Input validation
-
-
-
 
 Individual Responsibilities 
 Employee Management
