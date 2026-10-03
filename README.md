@@ -2,11 +2,11 @@ Municipal Financial Management System
 
 Group members:
 1. Tuuliki Itana 226052508
-2.Ferrucio Nakale
+2.226075508 Ferrucio.L Nakale
 3. Denzel
 4. Ndjipua Kamboo
 5. Thula
-6. Treasure
+6. 223059242 Muingona T Mbaha
 7.  hhhh
    
 Project discription 
@@ -23,10 +23,10 @@ Searching
 Input validation
 
 Individual Responsibilities 
-Employee Management
+Employee Management - 223059242 Muingona T Mbaha
 Budget Management 
-Supplier Management 
-Asset mangement - 226052508 Tuuliki
+Supplier Management -226075508 Ferrucio.L Nakale
+Asset mangement - 226052508 Tuuliki TN Itana
 Reports - Denzel 
-Functions,Integration & validation
+Functions,Integration & validation-
 Testing, documentation and Git coordination - 
