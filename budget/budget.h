@@ -18,7 +18,6 @@ void calculateBudget(struct Budget budgets[], int count);
 void showExceededBudgets(struct Budget budgets[], int count);
 void budgetMenu(struct Budget budgets[], int *count);
 
-/* Budget data is shared with the Reports module (reports.c) */
 extern struct Budget budgets[MAX_DEPARTMENTS];
 extern int budgetCount;
 
