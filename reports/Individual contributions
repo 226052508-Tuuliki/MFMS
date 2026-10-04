@@ -1,0 +1,16 @@
+Name:  Denzel Mweshipooli
+Student Number: 226136329
+Responsibility: reports
+Functions written:
+  - supplierReport()
+  - assetReport()
+  - employeeReport()
+  - budgetReport()
+
+GitHub contribution:- reports.h  – header with all function prototypes
+  - reports.c  – full implementation of the four reports + menu
+
+Testing performed: - Compiled with: gcc -Wall -c reports.c
+  - Result: few errors, fewwarnings
+  - Manually verified each report handles the empty-data case
+  - Verified totals,averages,highest/lowest and over-budget logic
