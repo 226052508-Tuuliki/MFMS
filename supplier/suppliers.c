@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 #include "suppliers.h"
+#include "../validation.h"
 
 int supplierID[5];
 char supplierName[5][100];
 char email[5][50];
-char telephoneNumber[5][10];
+char telephoneNumber[5][20];
 char Town[5][50];
 
 int Count = 0;
@@ -18,19 +19,19 @@ void addSupplier()
         printf("\n add supplier \n");
 
         printf("Enter The suppliers ID: ");
-        scanf("%d", &supplierID[Count]);
+        supplierID[Count] = readInt("", 1, 999999);
 
         printf("Enter the supplier Name: ");
-        scanf("%s", supplierName[Count]);
+        readText("", supplierName[Count], 100);
 
         printf("Enter the Email: ");
-        scanf("%s", email[Count]);
+        readEmail("", email[Count], 50);
 
         printf("Enter the Telephone Number: ");
-        scanf("%s", telephoneNumber[Count]);
+        readPhone("", telephoneNumber[Count], 20);
 
         printf("Enter the Town/Location: ");
-        scanf("%s", Town[Count]);
+        readText("", Town[Count], 50);
 
         printf("\nSupplier was successfully added.\n");
 
@@ -76,7 +77,7 @@ void searchSupplier()
     printf("\n search for the supplier \n");
 
     printf("Enter the suppliers Name: ");
-    scanf("%s", searchName);
+    readText("", searchName, 50);
 
     for (i = 0; i < Count; i++)
     {
@@ -111,7 +112,7 @@ void compareSuppliers()
     printf("\n Compare Supplier Information \n");
 
     printf("Enter Supplier ID: ");
-    scanf("%d", &compareID);
+    compareID = readInt("", 1, 999999);
 
     for (i = 0; i < Count; i++)
     {
@@ -134,4 +135,43 @@ void compareSuppliers()
     {
         printf("Supplier ID entered does not exist.\n");
     }
+}
+
+void supplierMenu(void)
+{
+    int choice;
+
+    do
+    {
+        printf("\n========================================\n");
+        printf("          SUPPLIER MANAGEMENT\n");
+        printf("========================================\n");
+        printf("1. Add Supplier\n");
+        printf("2. Display Suppliers\n");
+        printf("3. Search Supplier by Name\n");
+        printf("4. Compare/Search Supplier by ID\n");
+        printf("5. Return to Main Menu\n");
+        printf("========================================\n");
+
+        choice = readMenuChoice("Enter your choice: ", 1, 5);
+
+        switch (choice)
+        {
+            case 1:
+                addSupplier();
+                break;
+            case 2:
+                displaySuppliers();
+                break;
+            case 3:
+                searchSupplier();
+                break;
+            case 4:
+                compareSuppliers();
+                break;
+            case 5:
+                printf("\nReturning to Main Menu...\n");
+                break;
+        }
+    } while (choice != 5);
 }
