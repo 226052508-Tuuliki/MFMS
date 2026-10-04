@@ -1,3 +1,4 @@
+[INTEGRATION_CHANGES.md](https://github.com/user-attachments/files/33033925/INTEGRATION_CHANGES.md)
 # MFMS – Integration changes (Student 6)
 
 The five modules were written separately and could not run together: each had
@@ -13,9 +14,10 @@ gcc -std=c99 -Wall -Wextra -pedantic -o mfms main.c validation.c employees/emplo
 ```
 
 Tested end to end: add/display/search data in every module, all four reports,
-invalid menu choices, negative and non-numeric numbers, bad e-mail addresses.
-It compiles with `-std=c99 -Wall -Wextra -pedantic` with one harmless warning
-(unused parameter `departments` in `reports.c`).
+invalid menu choices, negative, non-numeric and over-long numbers, empty and
+invalid names, bad e-mail addresses and phone numbers, duplicate IDs, full
+arrays and end-of-input. It compiles with `-std=c99 -Wall -Wextra -pedantic`
+with **no warnings**.
 
 ## Files changed, by owner
 
@@ -42,7 +44,9 @@ It compiles with `-std=c99 -Wall -Wextra -pedantic` with one harmless warning
 - Added `supplierMenu()` (there was no menu).
 - Telephone array enlarged from 10 to 20 characters (a 10-digit number such as 0612072052 overflowed the old array).
 - `scanf()` replaced with `readInt`, `readText`, `readEmail`, `readPhone`.
-- Data arrays declared `extern` in the header for Reports.
+- Data arrays declared `extern` in the header for Reports; the counter `Count` was renamed `supplierCount` so it is clear when Reports reads it.
+- Added a duplicate-ID check in `addSupplier()`; name search now ignores upper/lower case (`equalsIgnoreCase`).
+- Final fix (4 Oct): the folder `supplier managment` (space in the name) was replaced by `supplier/` and the validation/menu changes above were re-applied after the file was overwritten.
 
 **Assets (Student 4)** – `assets/assets.c`, `assets/assets.h`
 - Removed the test `main()`.
@@ -55,8 +59,14 @@ It compiles with `-std=c99 -Wall -Wextra -pedantic` with one harmless warning
 - Added the missing `#include <stdio.h>` and the other includes.
 - Added `displayReports()` (the Reports menu) that feeds each module's data into `employeeReport`, `budgetReport`, `supplierReport` and `assetReport`.
 - Header typo `diaplayReports` → `displayReports`; phone array size updated to 20 to match suppliers.
+- Final fix (4 Oct): the uploaded `reports.c` was cut off in the middle of `employeeReport()` (no `budgetReport()`, no `displayReports()`), so the file was completed. The four report functions keep their original names and parameters. `budgetReport()` reads the `struct Budget` array from `budget.h`.
+
+## Root files changed in the final fix (Student 6)
+- `main.c` – the main menu now starts with the line "Welcome to Windhoek Municipality" (the banner from the old `employees/main.c`).
+- `INTEGRATION_CHANGES.md` – this file, updated.
 
 ## Things each owner should still be able to explain / may want to improve
+- **Student 1:** `validateNonEmptyString(const char *str)` in `employees.c` uses a pointer parameter, which is not in the Week 1–8 notes. It works, but be ready to explain it.
 - **Student 2:** `budget.c` uses `struct` and pointers (`int *count`), which are not in the Week 1–8 notes. It works, but be ready to explain it.
 - **Student 3:** only 5 suppliers can be stored (their original design).
 - **Student 4:** duplicate asset IDs are not rejected; the ID is a number.
