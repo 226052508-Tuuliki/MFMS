@@ -1,4 +1,4 @@
 #ifndef REPORTS_H
 #define REPORTS_H
-void diaplayReports(void);
+void displayReports(void);
 #endif 

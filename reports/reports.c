@@ -1,5 +1,14 @@
+#include <stdio.h>
+#include <string.h>
+#include "../validation.h"
+#include "../employees/employees.h"
+#include "../budget/budget.h"
+#include "../supplier/suppliers.h"
+#include "../assets/assets.h"
+#include "reports.h"
+
 void supplierReport(int ids[], char names[][100], char emails[][50],
-                    char phones[][10], char towns[][50], int count)
+                    char phones[][20], char towns[][50], int count)
 {
     printf("\n===== SUPPLIER REPORT =====\n");
 
@@ -161,4 +170,61 @@ void budgetReport(int deptIDs[], char deptNames[][50],
         printf("  None – all departments are within budget.\n");
     else
         printf("\nTotal departments over budget: %d\n", overBudgetCount);
+}
+
+/* Reports sub-menu: collects the data stored by each module and passes it
+ * to the report functions above. */
+void displayReports(void)
+{
+    int choice;
+    int i;
+    int deptIDs[MAX_DEPARTMENTS];
+    char deptNames[MAX_DEPARTMENTS][50];
+    double allocated[MAX_DEPARTMENTS];
+    double spent[MAX_DEPARTMENTS];
+
+    do
+    {
+        printf("\n========================================\n");
+        printf("                REPORTS\n");
+        printf("========================================\n");
+        printf("1. Employee Report\n");
+        printf("2. Budget Report\n");
+        printf("3. Supplier Report\n");
+        printf("4. Asset Report\n");
+        printf("5. Return to Main Menu\n");
+        printf("========================================\n");
+
+        choice = readMenuChoice("Enter your choice: ", 1, 5);
+
+        switch (choice)
+        {
+            case 1:
+                employeeReport(employeeIDs, employeeNames, employeeDepartments,
+                               employeeBasicSalaries, employeeHousingAllowances,
+                               employeeTransportAllowances, getEmployeeCount());
+                break;
+            case 2:
+                for (i = 0; i < budgetCount; i++)
+                {
+                    deptIDs[i] = budgets[i].departmentID;
+                    strcpy(deptNames[i], budgets[i].departmentName);
+                    allocated[i] = budgets[i].allocatedBudget;
+                    spent[i] = budgets[i].expenditure;
+                }
+                budgetReport(deptIDs, deptNames, allocated, spent, budgetCount);
+                break;
+            case 3:
+                supplierReport(supplierID, supplierName, email,
+                               telephoneNumber, Town, Count);
+                break;
+            case 4:
+                assetReport(assetID, assetName, typeOfAsset, valueOfPurchase,
+                            department, conditionOfAsset, assetCount);
+                break;
+            case 5:
+                printf("\nReturning to Main Menu...\n");
+                break;
+        }
+    } while (choice != 5);
 }
