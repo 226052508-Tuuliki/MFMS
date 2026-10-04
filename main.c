@@ -36,6 +36,7 @@ void displayMenu(void)
 {
     printf("\n");
     printDivider('=', 40);
+    printf("Welcome to Windhoek Municipality\n");
     printf("MUNICIPAL FINANCIAL MANAGEMENT SYSTEM\n");
     printDivider('=', 40);
     printf("%d. Employee Management\n", MENU_EMPLOYEES);
