@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include "assets.h"
+#include "../validation.h"
 
 
     int assetID[100];
@@ -19,22 +21,22 @@ void addAsset() {
     
      printf("\n-------------ADD ASSET -------------\n");
     printf("Enter asset ID : ");
-    scanf("%d", &assetID[assetCount]);
+    assetID[assetCount] = readInt("", 1, 999999);
 
     printf("Enter asset name :");
-    scanf(" %[^\n]" , assetName[assetCount]);
+    readText("", assetName[assetCount], 50);
 
     printf("Enter type of asset :");
-    scanf(" %[^\n]",typeOfAsset[assetCount]);
+    readText("", typeOfAsset[assetCount], 50);
 
     printf("Enter value of purchase :");
-    scanf(" %f", &valueOfPurchase[assetCount]);
+    valueOfPurchase[assetCount] = readMoney("");
 
     printf("Enter department : ");
-    scanf(" %[^\n]", department[assetCount]);
+    readText("", department[assetCount], 50);
 
     printf("Enter condition of asset : ");
-    scanf(" %[^\n]" , conditionOfAsset[assetCount]);
+    readText("", conditionOfAsset[assetCount], 50);
 
     assetCount++;
 
@@ -69,7 +71,7 @@ void searchAsset(){
 
     printf("\n------------Search Asset----------\n");
     printf("Enter ID of asset to search for : ");
-    scanf("%d",&searchID);
+    searchID = readInt("", 1, 999999);
 
     for(i=0; i<assetCount; i++){
         if(assetID[i]== searchID){
@@ -77,7 +79,7 @@ void searchAsset(){
             printf("Asset ID : %d\n ", assetID[i]);
             printf("Asset Name : %s\n", assetName[i]);
             printf("Type Of Asset : %s\n", typeOfAsset[i]);
-            printf("Value of Purchase : N$.2f\n", valueOfPurchase[i]);
+            printf("Value of Purchase : N$%.2f\n", valueOfPurchase[i]);
             printf("Department : %s\n", department[i]);
             printf("Condition of asset : %s\n",conditionOfAsset[i]);
 
@@ -101,7 +103,7 @@ void assetmanagement(){
         printf("4. Return to main menu\n");
 
         printf("Enter your choice :");
-        scanf("%d", &choice);
+        choice = readMenuChoice("", 1, 4);
 
         switch (choice){
             case 1 :
@@ -125,8 +127,4 @@ void assetmanagement(){
             
         }
     } while (choice !=4);
-}
-int main(){
-    assetmanagement();
-    return 0;
 }
