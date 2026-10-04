@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <string.h>
-#include "employee.h"
+#include "employees.h"
+#include "../validation.h"
 
 
-    static char employeeIDs[MAX_EMPLOYEES][MAX_ID_LENGTH];
-    static char employeeNames[MAX_EMPLOYEES][MAX_NAME_LENGTH];
-    static char employeeDepartments[MAX_EMPLOYEES][MAX_DEPT_LENGTH];
-    static double employeeBasicSalaries[MAX_EMPLOYEES];
-    static double employeeHousingAllowances[MAX_EMPLOYEES];
-    static double employeeTransportAllowances[MAX_EMPLOYEES];
+    char employeeIDs[MAX_EMPLOYEES][MAX_ID_LENGTH];
+    char employeeNames[MAX_EMPLOYEES][MAX_NAME_LENGTH];
+    char employeeDepartments[MAX_EMPLOYEES][MAX_DEPT_LENGTH];
+    double employeeBasicSalaries[MAX_EMPLOYEES];
+    double employeeHousingAllowances[MAX_EMPLOYEES];
+    double employeeTransportAllowances[MAX_EMPLOYEES];
     static int employeeCount = 0;
     
     int validatePositiveSalary(double salary)
@@ -61,7 +62,7 @@
         {
             validInput = 1;
             printf("Enter Employee ID: ");
-            scanf("%19s", tempID);
+            readId("", tempID, MAX_ID_LENGTH);
             
             if (!validateNonEmptyString(tempID))
             {
@@ -92,7 +93,7 @@
         
         {
             printf("Enter Employee Name: ");
-            scanf("%49s", tempName);
+            readName("", tempName, MAX_NAME_LENGTH);
             
             if (!validateNonEmptyString(tempName))
             {
@@ -102,7 +103,7 @@
         do
         {
             printf("Enter Department: ");
-            scanf("%49s", tempDept);
+            readText("", tempDept, MAX_DEPT_LENGTH);
             
             if (!validateNonEmptyString(tempDept))
             {
@@ -113,7 +114,7 @@
         do
         {
             printf("Enter Basic Salary (N$): ");
-            scanf("%lf", &tempBasic);
+            tempBasic = readPositiveMoney("");
             
             if (!validatePositiveSalary(tempBasic))
             {
@@ -124,7 +125,7 @@
         do
         {
             printf("Enter Housing Allowance (N$): ");
-            scanf("%lf", &tempHousing);
+            tempHousing = readMoney("");
             
             if (tempHousing < 0)
             {
@@ -135,7 +136,7 @@
         do
         {
             printf("Enter Transport Allowance (N$): ");
-            scanf("%lf", &tempTransport);
+            tempTransport = readMoney("");
             
             if (tempTransport < 0)
             {
@@ -212,7 +213,7 @@
         }
         
         printf("Enter Employee ID to search: ");
-        scanf("%19s", searchID);
+        readId("", searchID, MAX_ID_LENGTH);
         
         for (i = 0; i < employeeCount; i++)
         {
@@ -260,7 +261,7 @@
         }
         
         printf("Enter Employee ID: ");
-        scanf("%19s", searchID);
+        readId("", searchID, MAX_ID_LENGTH);
         
         for (i = 0; i < employeeCount; i++)
         {
@@ -280,7 +281,7 @@
                 printf("Gross Salary      : N$ %12.2f\n", grossSalary);
                 
                 printf("\nEnter Tax Amount (N$): ");
-                scanf("%lf", &tax);
+                tax = readMoney("");
                 
                 if (tax < 0)
                 {
@@ -384,4 +385,40 @@
     int getEmployeeCount(void)
     {
         return employeeCount;
+    }
+
+    /* Employee sub-menu: runs until the user chooses "Return to Main Menu".
+     * (Moved here from the old employees/main.c so the main menu in the
+     * root main.c can call it.) */
+    void employeeMenu(void)
+    {
+        int empChoice;
+
+        do
+        {
+            displayEmployeeMenu();
+            empChoice = readMenuChoice("", 1, 6);
+
+            switch (empChoice)
+            {
+                case 1:
+                    addEmployee();
+                    break;
+                case 2:
+                    displayEmployees();
+                    break;
+                case 3:
+                    searchEmployee();
+                    break;
+                case 4:
+                    calculateEmployeeSalary();
+                    break;
+                case 5:
+                    displaySalarySummary();
+                    break;
+                case 6:
+                    printf("\n  Returning to main menu...\n");
+                    break;
+            }
+        } while (empChoice != 6);
     }
