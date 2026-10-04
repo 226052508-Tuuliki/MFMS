@@ -5,7 +5,7 @@ Group members:
 2.226075508 Ferrucio.L Nakale
 3. Denzel
 4. Ndjipua Kamboo
-5. Nokuthula Marina 224019945
+5. Nokuthula Marima 224019945
 6. 223059242 Muingona T Mbaha
 7.  hhhh
    
@@ -24,7 +24,7 @@ Input validation
 
 Individual Responsibilities 
 Employee Management - 223059242 Muingona T Mbaha
-Budget Management 
+Budget Management- 224019945 Nokuthula Marima
 Supplier Management -226075508 Ferrucio.L Nakale
 Asset mangement - 226052508 Tuuliki TN Itana
 Reports - Denzel 
