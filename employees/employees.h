@@ -1,3 +1,4 @@
+/* Employee Management Header - Originally developed by Muingona T Mbaha 223059242
 #ifndef EMPLOYEES_H
 #define EMPLOYEES_H
 
