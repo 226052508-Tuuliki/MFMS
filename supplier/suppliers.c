@@ -135,7 +135,7 @@ void compareSuppliers()
         printf("Supplier ID entered does not exist.\n");
     }
 }
- void suppliereMenu(void)
+ void supplierMenu(void)
 {
  int choice = 0;
     while(choice !=5)
