@@ -161,7 +161,7 @@ void compareSuppliers()
                 break;
 
                 case 3:
-                searchSupplier():
+                searchSupplier();
                     break;
                 case 4: 
                 compareSuppliers();
