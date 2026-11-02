@@ -134,6 +134,7 @@ void compareSuppliers()
     {
         printf("Supplier ID entered does not exist.\n");
     }
+}
  void suppliereMenu(void)
 {
  int choice = 0;
@@ -174,5 +175,4 @@ void compareSuppliers()
             }
         }
                 
-            
-}
+    }
