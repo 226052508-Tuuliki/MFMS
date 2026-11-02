@@ -140,7 +140,7 @@ void compareSuppliers()
  int choice = 0;
     while(choice !=5)
         {
-            printf("---Supplier Management ---");
+            printf("\n---Supplier Management ---\n");
             printf("1.add supplier\n");
             printf("2.display suppliers\n");
             printf("3.search for supplier\n");
