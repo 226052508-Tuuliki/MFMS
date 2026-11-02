@@ -148,7 +148,7 @@ void compareSuppliers()
             printf("5.EXIT\n");
 
             printf("enter your choice:");
-            scanf("%d, &choice);
+            scanf("%d", &choice);
 
         switch(choice)
                 {
