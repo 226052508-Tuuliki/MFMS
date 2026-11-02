@@ -5,5 +5,6 @@ void addSupplier();
 void displaySuppliers();
 void searchSupplier();
 void compareSuppliers();
+void supplierMenu();
 
 #endif 
