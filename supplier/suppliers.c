@@ -134,4 +134,45 @@ void compareSuppliers()
     {
         printf("Supplier ID entered does not exist.\n");
     }
+ void suppliereMenu(void)
+{
+ int choice = 0;
+    while(choice !=5)
+        {
+            printf("---Supplier Management ---");
+            printf("1.add supplier\n");
+            printf("2.display suppliers\n");
+            printf("3.search for supplier\n");
+            printf("4. copare supplier information\n");
+            printf("5.EXIT\n");
+
+            printf("enter your choice:");
+            scanf("%d, &choice);
+
+        switch(choice)
+                {
+                case 1:
+                addSupplier();
+                break;
+
+                case 2:
+                displaySuppliers();
+                break;
+
+                case 3:
+                searchSupplier():
+                    break;
+                case 4: 
+                compareSuppliers();
+                break;
+
+                case 5:
+                printf(" leaving supplier managment.\n");
+                break;
+                default:
+                printf("Wrong choice entered\n");
+            }
+        }
+                
+            
 }
