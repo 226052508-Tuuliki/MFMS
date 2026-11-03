@@ -9,7 +9,10 @@ char telephoneNumber[5][10];
 char Town[5][50];
 
 int Count = 0;
-
+int getSupplierCount(void)
+{
+    return Count;
+}
 
 void addSupplier()
 {
