@@ -6,5 +6,5 @@ void displaySuppliers();
 void searchSupplier();
 void compareSuppliers();
 void supplierMenu();
-
+int getSupplierCount();
 #endif 
