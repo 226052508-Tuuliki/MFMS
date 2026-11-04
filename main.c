@@ -13,7 +13,7 @@
 #include "budget/budget.h"
 #include "supplier/suppliers.h"
 #include "assets/assets.h"
-#include "reports/reports.h"
+#include "reports/report.h"
 
 void displayMenu(void);
 void runMenuOption(int choice);
